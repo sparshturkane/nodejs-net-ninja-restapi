@@ -2,6 +2,7 @@
  * importing core modules
  */
 var express = require('express');
+var Ninja = require('../models/ninja');
 
 /**
  * initilizing core modules
@@ -19,10 +20,10 @@ router.get('/ninjas', function (req, res) {
 
 // inserting ninja in db
 router.post('/ninjas', function (req, res) {
-  console.log(req.body);
-  res.send({
-    type: 'POST',
-    name: req.body.name
+  // var ninja = new Ninja(req.body);
+  // ninja.save();
+  Ninja.create(req.body).then(function (ninja) {
+    res.send(ninja);
   });
 });
 
