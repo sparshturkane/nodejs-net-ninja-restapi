@@ -11,7 +11,7 @@ var router = express.Router();
 
 
 // getting list of all ninjas from db
-router.get('/ninjas', function (req, res) {
+router.get('/ninjas', function (req, res, next) {
   console.log(req);
   res.send({
     type: 'GET'
@@ -19,16 +19,14 @@ router.get('/ninjas', function (req, res) {
 });
 
 // inserting ninja in db
-router.post('/ninjas', function (req, res) {
-  // var ninja = new Ninja(req.body);
-  // ninja.save();
+router.post('/ninjas', function (req, res, next) {
   Ninja.create(req.body).then(function (ninja) {
     res.send(ninja);
-  });
+  }).catch(next);
 });
 
 // updating ninja in db
-router.put('/ninjas/:id', function (req, res) {
+router.put('/ninjas/:id', function (req, res, next) {
   console.log(req);
   res.send({
     type: 'PUT'
@@ -36,7 +34,7 @@ router.put('/ninjas/:id', function (req, res) {
 });
 
 // deeleting ninja from db
-router.delete('/ninjas/:id', function (req, res) {
+router.delete('/ninjas/:id', function (req, res, next) {
   console.log(req);
   res.send({
     type: 'DELETE'
