@@ -19,9 +19,10 @@ router.get('/ninjas', function (req, res) {
 
 // inserting ninja in db
 router.post('/ninjas', function (req, res) {
-  console.log(req);
+  console.log(req.body);
   res.send({
-    type: 'POST'
+    type: 'POST',
+    name: req.body.name
   });
 });
 
