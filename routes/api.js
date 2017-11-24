@@ -12,8 +12,8 @@ var router = express.Router();
 
 // getting list of all ninjas from db
 router.get('/ninjas', function (req, res, next) {
-  res.send({
-    type: 'GET'
+  Ninja.find().then(function (ninja) {
+    res.send(ninja);
   });
 });
 

@@ -27,8 +27,7 @@ const NinjaSchema = new Schema({
   available: {
     type: Boolean,
     default: false
-  },
-  geometry: GeoLocaionSchema
+  }
 });
 
 const Ninja = mongoose.model('ninja', NinjaSchema);
