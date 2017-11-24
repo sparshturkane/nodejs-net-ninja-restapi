@@ -12,7 +12,6 @@ var router = express.Router();
 
 // getting list of all ninjas from db
 router.get('/ninjas', function (req, res, next) {
-  console.log(req);
   res.send({
     type: 'GET'
   });
@@ -27,17 +26,19 @@ router.post('/ninjas', function (req, res, next) {
 
 // updating ninja in db
 router.put('/ninjas/:id', function (req, res, next) {
-  console.log(req);
   res.send({
     type: 'PUT'
   });
 });
 
-// deeleting ninja from db
+// deleting ninja from db
 router.delete('/ninjas/:id', function (req, res, next) {
-  console.log(req);
+  Ninja.findByIdAndRemove({_id:req.params.id}).then(function (ninja) {
+
+  });
   res.send({
-    type: 'DELETE'
+    type: 'DELETE',
+    id: req.params.id
   });
 });
 
