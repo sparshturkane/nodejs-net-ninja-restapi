@@ -49,10 +49,12 @@ router.delete('/ninjas/:id', function (req, res, next) {
 
 // get/
 router.get('/', function (req, res, next) {
-  request('http://www.google.com', function (error, response, body) {
+  request('https://app-srt.b2x.com/consumer-portal/api/countryCheck/', function (error, response, body) {
     console.log('error:', error); // Print the error if one occurred and handle it
     console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-    res.send(body)
+    var responseObj = JSON.parse(response.body);
+    // console.log(responseObj.body);
+    res.send(responseObj);
   });
 });
 
