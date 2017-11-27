@@ -4,6 +4,7 @@
 var express = require('express');
 var Ninja = require('../models/ninja');
 var request = require('request');
+var ninjaController = require('../controllers/ninjasController');
 
 /**
  * initilizing core modules
@@ -12,11 +13,7 @@ var router = express.Router();
 
 
 // getting list of all ninjas from db
-router.get('/ninjas', function (req, res, next) {
-    Ninja.find().then(function (ninja) {
-        res.send(ninja);
-    });
-});
+router.get('/ninjas', ninjaController.get);
 
 // inserting ninja in db
 router.post('/ninjas', function (req, res, next) {
